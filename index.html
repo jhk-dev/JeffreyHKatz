@@ -22,8 +22,48 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      transition: background-size 0.3s ease;
+    }
+
+    #size-badge {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #size-badge span {
+      color: #7dd3fc;
     }
   </style>
 </head>
-<body></body>
+<body>
+  <div id="size-badge">
+    <span id="w"></span> × <span id="h"></span> px
+  </div>
+
+  <script>
+    const w = document.getElementById('w');
+    const h = document.getElementById('h');
+
+    function update() {
+      w.textContent = window.innerWidth;
+      h.textContent = window.innerHeight;
+    }
+
+    update();
+    window.addEventListener('resize', update);
+  </script>
+</body>
 </html>
